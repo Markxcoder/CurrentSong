@@ -134,7 +134,8 @@ function notifySong(songInfo) {
 
     notifications.notify({
         title: song,
-        text: text
+        text: text,
+        iconURL: self.data.url("icon64.png")
     });
 }
 
