@@ -50,7 +50,6 @@ function link(w) {
         songInfo[0] = songInfo[0] != null ? songInfo[0].trim() : "";
         songInfo[1] = songInfo[1] != null ? songInfo[1].trim() : "";
         songInfo[2] = songInfo[2] != null ? songInfo[2].trim() : "";
-        songInfo[3] = songInfo[3] != null ? songInfo[3].trim() : "";
 
         if (songInfo[0].length > 0 || songInfo[1].length > 0 ||songInfo[2].length > 0) {
             saveData(songInfo);
@@ -109,12 +108,11 @@ function saveArtWork(url) {
     if (url.length == 0) {
         url = "http://pacohobi.com/currentsong/artworkw.jpg";
     }
-    console.log("URLURLURLURLURLURLURLURLURLURLURL: " + url);
     downloadFile(artFile, url);
 }
 
 function saveTextFile(fileName, text) {
-    let encoder = new TextEncoder();
+    let encoder = new TextEncoder(preferences.encoding);
     let array = encoder.encode(text);
     let promise = OS.File.writeAtomic(fileName, array);
 }

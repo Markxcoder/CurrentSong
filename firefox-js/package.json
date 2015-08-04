@@ -6,7 +6,7 @@
   "description": "Writes the current playing song from popular music sites to a text file and a XML file",
   "author": "Paco Hobi",
   "license": "MIT",
-  "version": "1.1",
+  "version": "1.2",
   "icon": "icon.png",
   "icon64": "icon64.png",
   "preferences": [{
@@ -42,6 +42,26 @@
       "description": "If enabled a notification will be shown when a new song starts (not compatible with all systems)",
       "type": "bool",
       "value": false
+  },
+  {
+    "name": "encoding",
+    "type": "radio",
+    "title": "Text file encoding",
+    "value": "utf-8",
+    "options": [
+        {
+            "value": "utf-8",
+            "label": "UTF-8"
+        },
+        {
+            "value": "utf-16be",
+            "label": "UTF-16BE"
+        },
+        {
+            "value": "utf-16le",
+            "label": "UTF-16LE"
+        }
+    ]
   },
   {
       "name": "parseTrack",
