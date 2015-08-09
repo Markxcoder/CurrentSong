@@ -15,6 +15,7 @@ Supported sites
 + [grooveshark.com](http://grooveshark.com)
 + [retro.grooveshark.com](http://retro.grooveshark.com)
 + [iheart.com](http://iheart.com)
++ [music.microsoft.com](https://music.microsoft.com)
 + [nightbot.tv](http://nightbot.tv/autodj)
 + [pandora.com](http://pandora.com)
 + [play.google.com](http://play.google.com/music)
@@ -27,7 +28,6 @@ Supported sites
 + [themusicninja.com](http://themusicninja.com)
 + [tunein.com](http://tunein.com)
 + [vk.com](http://vk.com)
-+ [music.xbox.com](https://music.xbox.com)
 + [youtube.com](http://youtube.com)
 
 CurrentSong is in its early stages, support for more music sites will be added. If you want support for a specific site, please [contact me](mailto:hey@pacohobi.com).
