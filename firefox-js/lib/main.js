@@ -34,7 +34,7 @@ pageMod.PageMod({
         "*.themusicninja.com",
         "*.tunein.com",
         "*.vk.com",
-        "*.music.xbox.com",
+        "*.music.microsoft.com",
         "*.youtube.com"],
     contentScriptFile: self.data.url("script.js"),
     contentScriptWhen: "ready",

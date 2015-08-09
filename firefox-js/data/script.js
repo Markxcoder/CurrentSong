@@ -313,7 +313,7 @@ if (domain == "8tracks.com") {
 		artwork = null; // TODO: get artwork
 		return [song, artist, album, artwork];
 	}
-} else if (domain == "music.xbox.com") {
+} else if (domain == "music.microsoft.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
 		try {
