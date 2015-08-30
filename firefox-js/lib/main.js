@@ -19,19 +19,20 @@ pageMod.PageMod({
         "*.listen.beatsmusic.com",
         "*.deezer.com",
         "*.di.fm",
+        /.*play\.google\.com\/music\/listen.*/,
         "*.grooveshark.com",
         "*.retro.grooveshark.com",
         "*.iheart.com",
         "https://www.nightbot.tv/autodj",
         "*.pandora.com",
-        /.*play\.google\.com\/music\/listen.*/,
-        "*.play.spotify.com",
-        "*.player.spotify.com",
         "*.plug.dj",
         "*.rdio.com",
         "*.songza.com",
+        "*.play.spotify.com",
+        "*.player.spotify.com",
         "*.soundcloud.com",
         "*.themusicninja.com",
+        "*.listen.tidal.com",
         "*.tunein.com",
         "*.vk.com",
         "*.music.microsoft.com",
@@ -104,7 +105,7 @@ function saveData(songInfo) {
 }
 
 function saveArtWork(url) {
-    let artFile  = OS.Path.join(preferences.saveFolder, "song.jpg");
+    let artFile = OS.Path.join(preferences.saveFolder, "song.jpg");
     if (url.length == 0) {
         url = "http://pacohobi.com/currentsong/artworkw.jpg";
     }

@@ -66,6 +66,23 @@ if (domain == "8tracks.com") {
 		} catch (err) { artwork = null; }
 		return [song, artist, album, artwork];
 	}
+} else if (domain == "play.google.com") {
+	getInfo = function() {
+		var song, artist, album, artwork;
+		try {
+			song = document.getElementById("player-song-title").firstChild.nodeValue;
+		} catch (err) { song = null; }
+		try {
+			artist = document.getElementById("player-artist").firstChild.nodeValue;
+		} catch (err) { artist = null; }
+		try {
+			album = document.getElementsByClassName("player-artist-album-wrapper")[0].getElementsByClassName("player-album")[0].firstChild.nodeValue;
+		} catch (err) { album = null; }
+		try {
+			artwork = document.getElementById("playerSongInfo").getElementsByClassName("image-wrapper")[0].getElementsByTagName("img")[0].src.slice(0, -9) + "200-c-e100";
+		} catch (err) { artwork = null; }
+		return [song, artist, album, artwork];
+	}
 } else if (domain == "grooveshark.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
@@ -138,59 +155,6 @@ if (domain == "8tracks.com") {
 		} catch (err) { artwork = null; }
 		return [song, artist, album, artwork];
 	}
-} else if (domain == "play.google.com") {
-	getInfo = function() {
-		var song, artist, album, artwork;
-		try {
-			song = document.getElementById("player-song-title").firstChild.nodeValue;
-		} catch (err) { song = null; }
-		try {
-			artist = document.getElementById("player-artist").firstChild.nodeValue;
-		} catch (err) { artist = null; }
-		try {
-			album = document.getElementsByClassName("player-artist-album-wrapper")[0].getElementsByClassName("player-album")[0].firstChild.nodeValue;
-		} catch (err) { album = null; }
-		try {
-			artwork = document.getElementById("playerSongInfo").getElementsByClassName("image-wrapper")[0].getElementsByTagName("img")[0].src.slice(0, -9) + "200-c-e100";
-		} catch (err) { artwork = null; }
-		return [song, artist, album, artwork];
-	}
-} else if (domain == "play.spotify.com") {
-	getInfo = function() {
-		var song, artist = [], album;
-		try {
-			song = document.getElementById("app-player").contentWindow.document.getElementById("track-name").childNodes[0].firstChild.nodeValue;
-			if (song == " ") song = null;
-		} catch (err) { song = null; }
-		try {
-			var artists = document.getElementById("app-player").contentWindow.document.getElementById("track-artist").getElementsByTagName("a");
-			var i;
-			for (i=0; i<artists.length; i++) {
-				artist.push(artists[i].firstChild.nodeValue);
-			}
-			artist = artist.join(", ");
-		} catch (err) { artist = null; }
-		album = null; // TODO: get album
-		try {
-			artwork = document.getElementById("app-player").contentWindow.document.getElementsByClassName("sp-image-img")[0].style.backgroundImage.slice(5, -2);
-		} catch (err) { artwork = null; }
-		return [song, artist, album, artwork];
-	}
-} else if (domain == "player.spotify.com") {
-	getInfo = function() {
-		var song, artist, album;
-		try {
-			song = document.getElementById("main").contentWindow.document.getElementById("miniplayer").getElementsByClassName("title")[0].textContent;
-		} catch (err) { song = null; }
-		try {
-			artist = document.getElementById("main").contentWindow.document.getElementById("miniplayer").getElementsByClassName("artist")[0].textContent;
-		} catch (err) { artist = null; }
-		album = null; // TODO: get album
-		try {
-			artwork = document.getElementById("main").contentWindow.document.getElementById("miniplayer").getElementsByTagName("figure")[0].style.backgroundImage.slice(5, -2);
-		} catch (err) { artwork = null; }
-		return [song, artist, album, artwork];
-	}
 } else if (domain == "plug.dj") {
 	// TODO: getting banned?
 	getInfo = function() {
@@ -236,6 +200,42 @@ if (domain == "8tracks.com") {
 		} catch (err) { artwork = null; }
 		return [song, artist, album, artwork];
 	}
+} else if (domain == "play.spotify.com") {
+	getInfo = function() {
+		var song, artist = [], album;
+		try {
+			song = document.getElementById("app-player").contentWindow.document.getElementById("track-name").childNodes[0].firstChild.nodeValue;
+			if (song == " ") song = null;
+		} catch (err) { song = null; }
+		try {
+			var artists = document.getElementById("app-player").contentWindow.document.getElementById("track-artist").getElementsByTagName("a");
+			var i;
+			for (i=0; i<artists.length; i++) {
+				artist.push(artists[i].firstChild.nodeValue);
+			}
+			artist = artist.join(", ");
+		} catch (err) { artist = null; }
+		album = null; // TODO: get album
+		try {
+			artwork = document.getElementById("app-player").contentWindow.document.getElementsByClassName("sp-image-img")[0].style.backgroundImage.slice(5, -2);
+		} catch (err) { artwork = null; }
+		return [song, artist, album, artwork];
+	}
+} else if (domain == "player.spotify.com") {
+	getInfo = function() {
+		var song, artist, album;
+		try {
+			song = document.getElementById("main").contentWindow.document.getElementById("miniplayer").getElementsByClassName("title")[0].textContent;
+		} catch (err) { song = null; }
+		try {
+			artist = document.getElementById("main").contentWindow.document.getElementById("miniplayer").getElementsByClassName("artist")[0].textContent;
+		} catch (err) { artist = null; }
+		album = null; // TODO: get album
+		try {
+			artwork = document.getElementById("main").contentWindow.document.getElementById("miniplayer").getElementsByTagName("figure")[0].style.backgroundImage.slice(5, -2);
+		} catch (err) { artwork = null; }
+		return [song, artist, album, artwork];
+	}
 } else if (domain == "soundcloud.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
@@ -262,6 +262,21 @@ if (domain == "8tracks.com") {
 		} catch (err) { artist = null; }
 		album = null; // TODO: get album
 		artwork = null; // TODO: get artwork
+		return [song, artist, album, artwork];
+	}
+} else if (domain == "listen.tidal.com") {
+	getInfo = function() {
+		var song, artist, album, artwork;
+		try {
+			song = document.getElementsByClassName("player__text")[0].children[0].firstChild.nodeValue;
+		} catch (err) { song = null; }
+		try {
+			artist = document.getElementsByClassName("player__text")[0].children[1].children[0].firstChild.nodeValue;
+		} catch (err) { artist = null; }
+		album = null; // TODO: get album
+		try {
+			artwork = document.getElementsByClassName("image--player")[0].firstChild.firstChild.src.slice(0, -9) + "320x320.jpg";
+		} catch (err) { artwork = null; }
 		return [song, artist, album, artwork];
 	}
 } else if (domain == "tunein.com") {
