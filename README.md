@@ -26,7 +26,7 @@ Supported sites
 + [player.spotify.com](http://player.spotify.com)
 + [soundcloud.com](http://soundcloud.com)
 + [themusicninja.com](http://themusicninja.com)
-+ [listen.tidal.com/](http://listen.tidal.com/)
++ [listen.tidal.com](http://listen.tidal.com/)
 + [tunein.com](http://tunein.com)
 + [vk.com](http://vk.com)
 + [youtube.com](http://youtube.com)
