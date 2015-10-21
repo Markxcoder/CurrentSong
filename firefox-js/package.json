@@ -1,14 +1,13 @@
 {
   "name": "currentsong",
   "title": "CurrentSong",
-  "id": "jid1-tXcW0tgdE3YBSQ",
+  "id": "jid1-tXcW0tgdE3YBSQ@jetpack",
+  "main": "lib/main.js",
   "author": "Paco Hobi",
   "description": "Writes the current playing song from popular music sites to a text file and a XML file",
   "author": "Paco Hobi",
   "license": "MIT",
   "version": "1.2.2",
-  "icon": "data/icon.png",
-  "icon64": "data/icon64.png",
   "preferences": [{
       "name": "saveFolder",
       "title": "Folder",
