@@ -174,10 +174,10 @@ if (domain == "8tracks.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
 		try {
-			song = document.getElementsByClassName("song_title")[0].firstChild.nodeValue;
+			song = document.getElementsByClassName("track_metadata")[0].getElementsByClassName("song_title")[0].firstChild.nodeValue;
 		} catch (err) { song = null; }
 		try {
-			artist = document.getElementsByClassName("artist_title")[0].firstChild.nodeValue;
+			artist = document.getElementsByClassName("track_metadata")[0].getElementsByClassName("artist_title")[0].firstChild.nodeValue;
 		} catch (err) { artist = null; }
 		album = null; // TODO: get album
 		try {
