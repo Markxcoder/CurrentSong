@@ -167,7 +167,7 @@ if (domain == "8tracks.com") {
 			artist = document.getElementById("now-playing-media").getElementsByClassName("author")[0].firstChild.nodeValue;
 		} catch (err) { artist = null; }
 		album = null; // TODO: get album
-		artowrk = null; // TODO: get artowrk
+		artwork = null; // TODO: get artwork
 		return [song, artist, album, artwork];
 	}
 } else if (domain == "rdio.com") {
@@ -262,6 +262,25 @@ if (domain == "8tracks.com") {
 		} catch (err) { artist = null; }
 		album = null; // TODO: get album
 		artwork = null; // TODO: get artwork
+		return [song, artist, album, artwork];
+	}
+} else if (domain == "theblast.fm") {
+	getInfo = function() {
+		var source = httpGet("http://www.theblast.fm/nowplayingsinglelinetheblast.php");
+		var song, artist, album, artwork;
+		try {
+			song = /Title: <a [^>]+>(.+?)<\/a>/.exec(source)[1];
+		} catch (err) { song = null; }
+		try {
+			artist = /Artist: <strong><font color=".+?">(.+?)<\/font>/.exec(source)[1];
+		} catch (err) { artist = null; }
+		try {
+			album = /Album: <a [^>]+>(.+?)<\/a>/.exec(source)[1];
+		} catch (err) { album = null; }
+		try {
+			artwork = /<img.*? src="(.+?)"/.exec(source)[1];
+			artwork = artwork.replace(/\/50\//, "/200/");
+		} catch (err) { artwork = null; }
 		return [song, artist, album, artwork];
 	}
 } else if (domain == "listen.tidal.com") {
@@ -402,4 +421,11 @@ function parseTrack(track) {
 		}
 	}
 	return [track, null];
+}
+
+function httpGet(theUrl) {
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
 }

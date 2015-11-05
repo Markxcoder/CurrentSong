@@ -32,6 +32,7 @@ pageMod.PageMod({
         "*.player.spotify.com",
         "*.soundcloud.com",
         "*.themusicninja.com",
+        /.*www\.theblast\.fm\/streams\/.*/,
         "*.listen.tidal.com",
         "*.tunein.com",
         "*.vk.com",
@@ -105,6 +106,7 @@ function saveData(songInfo) {
 }
 
 function saveArtWork(url) {
+    if (!preferences.saveFolder) return;
     let artFile = OS.Path.join(preferences.saveFolder, "song.jpg");
     if (url.length == 0) {
         url = "http://pacohobi.com/currentsong/artworkw.jpg";
