@@ -7,16 +7,16 @@ if (domain == "8tracks.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
 		try {
-			song = document.getElementById("now_playing").getElementsByClassName("t")[0].firstChild.nodeValue;
+			song = document.getElementsByClassName("title_artist")[0].getElementsByClassName("t")[0].firstChild.nodeValue;
 		} catch (err) { song = null; }
 		try {
-			artist = document.getElementById("now_playing").getElementsByClassName("a")[0].firstChild.nodeValue;
+			artist = document.getElementsByClassName("title_artist")[0].getElementsByClassName("a")[0].firstChild.nodeValue;
 		} catch (err) { artist = null; }
 		try {
-			album = document.getElementById("now_playing").getElementsByClassName("detail")[0].firstChild.nodeValue;
+			album = document.getElementsByClassName("track_metadata")[0].getElementsByClassName("album")[0].getElementsByClassName("detail")[0].firstChild.nodeValue;
 		} catch (err) { artist = null; }
 		try {
-			artwork = document.getElementById("mix_player_details").getElementsByTagName("img")[0].src.slice(0, -7) + "200&h=200";
+			artwork = document.getElementById("player_mix").getElementsByTagName("img")[0].src.slice(0, -9) + "200&h=200";
 		} catch (err) { artwork = null; }
 		return [song, artist, album, artwork];
 	}
@@ -70,13 +70,13 @@ if (domain == "8tracks.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
 		try {
-			song = document.getElementById("player-song-title").firstChild.nodeValue;
+			song = document.getElementById("currently-playing-title").firstChild.nodeValue;
 		} catch (err) { song = null; }
 		try {
 			artist = document.getElementById("player-artist").firstChild.nodeValue;
 		} catch (err) { artist = null; }
 		try {
-			album = document.getElementsByClassName("player-artist-album-wrapper")[0].getElementsByClassName("player-album")[0].firstChild.nodeValue;
+			album = document.getElementsByClassName("currently-playing-details")[0].getElementsByClassName("player-album")[0].firstChild.nodeValue;
 		} catch (err) { album = null; }
 		try {
 			artwork = document.getElementById("playerSongInfo").getElementsByClassName("image-wrapper")[0].getElementsByTagName("img")[0].src.slice(0, -9) + "200-c-e100";
@@ -133,7 +133,24 @@ if (domain == "8tracks.com") {
 		try {
 			song = document.getElementById("currentTitle").firstChild.nodeValue;
 		} catch (err) { song = null; }
-		artist = null;
+		song = parseTrack(song);
+		artist = song[1];
+		song = song[0];
+		album = null;
+		artwork = null;
+		return [song, artist, album, artwork];
+	}
+} else if (domain == "beta.nightbot.tv") {
+	getInfo = function() {
+		if (!window.location.href.contains("beta.nightbot.tv/song_request"))
+			return;
+		var song, artist, album, artwork;
+		try {
+			song = document.getElementsByTagName("h4")[0].firstChild.firstChild.nodeValue;
+		} catch (err) { song = null; }
+		song = parseTrack(song);
+		artist = song[1];
+		song = song[0];
 		album = null;
 		artwork = null;
 		return [song, artist, album, artwork];

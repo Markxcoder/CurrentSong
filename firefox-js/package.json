@@ -7,7 +7,7 @@
   "description": "Writes the current playing song from popular music sites to a text file and a XML file",
   "author": "Paco Hobi",
   "license": "MIT",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "preferences": [{
       "name": "saveFolder",
       "title": "Folder",
@@ -17,9 +17,9 @@
   {
       "name": "infoFormat",
       "title": "Format",
-      "description": "Format of the saved song information:\n\t%song% will be replaced by the song name\n\t%artist% will be replaced by the artist name\n\t%album% will be replaced by the album name",
+      "description": "Format of the saved song information:\n\t%song% will be replaced by the song name\n\t%artist% will be replaced by the artist name\n\t%album% will be replaced by the album name\n\t%line% will be replaced by a new line",
       "type": "string",
-      "value": "%song% by %artist%"
+      "value": "%song%%line%by %artist%"
   },
   {
       "name": "saveArtwork",
@@ -67,6 +67,6 @@
       "title": "Parse title",
       "description": "If enabled will try to extract the artist name of the current title. Only applied to SoundCloud and YouTube.\n• This will only work correctly if the track title is in the format 'artist - song'\n• If the track title contains ' - ' but isn't in the correct format, the song and artist will be parsed incorrectly",
       "type": "bool",
-      "value": false
+      "value": true
   }]
 }

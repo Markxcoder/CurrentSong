@@ -24,6 +24,7 @@ pageMod.PageMod({
         "*.retro.grooveshark.com",
         "*.iheart.com",
         "https://www.nightbot.tv/autodj",
+        "*.beta.nightbot.tv",
         "*.pandora.com",
         "*.plug.dj",
         "*.rdio.com",
@@ -43,6 +44,7 @@ pageMod.PageMod({
     contentScriptOptions: {
         preferences: preferences
     },
+    attachTo: "top",
     onAttach: link
 });
 
@@ -91,6 +93,7 @@ function saveData(songInfo) {
         text = text.replace("%song%", song);
         text = text.replace("%artist%", artist);
         text = text.replace("%album%", album);
+        text = text.replace("%line%", "\n");
         saveTextFile(textFile, text);
 
         // xml file
