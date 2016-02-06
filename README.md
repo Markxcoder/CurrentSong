@@ -26,7 +26,6 @@ Supported sites
 + [play.spotify.com](http://play.spotify.com)
 + [player.spotify.com](http://player.spotify.com)
 + [soundcloud.com](http://soundcloud.com)
-+ [theblast.fm/streams](http://theblast.fm)
 + [themusicninja.com](http://themusicninja.com)
 + [listen.tidal.com](http://listen.tidal.com/)
 + [tunein.com](http://tunein.com)
