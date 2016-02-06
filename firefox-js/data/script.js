@@ -281,7 +281,9 @@ if (domain == "8tracks.com") {
 		artwork = null; // TODO: get artwork
 		return [song, artist, album, artwork];
 	}
-} else if (domain == "theblast.fm") {
+}
+// Removed support because the info is in another site and we have to get it with a sync request, not allowed in public add-ons
+/*else if (domain == "theblast.fm") {
 	getInfo = function() {
 		var source = httpGet("http://www.theblast.fm/nowplayingsinglelinetheblast.php");
 		var song, artist, album, artwork;
@@ -300,7 +302,8 @@ if (domain == "8tracks.com") {
 		} catch (err) { artwork = null; }
 		return [song, artist, album, artwork];
 	}
-} else if (domain == "listen.tidal.com") {
+}*/
+else if (domain == "listen.tidal.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
 		try {
@@ -440,9 +443,12 @@ function parseTrack(track) {
 	return [track, null];
 }
 
-function httpGet(theUrl) {
-    var xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false ); // false for synchronous request
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
+/*function httpGet(theUrl) {
+	var xmlHttp = new XMLHttpRequest();
+	xmlHttp.onreadystatechange = function() {
+		if (xhttp.readyState == 4 && xhttp.status == 200)
+			return xmlHttp.responseText;
+	};
+	xmlHttp.open("GET", theUrl, true); // false for synchronous request
+	xmlHttp.send(null);
+}*/
