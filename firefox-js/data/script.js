@@ -1,7 +1,12 @@
+console.log("script.js - top", 1);
 domain = document.domain;
+console.log("script.js - top", 2);
 if (domain.slice(0, 4) == "www.") {
+	console.log("script.js - top", 3);
 	domain = domain.slice(4, domain.length);
+	console.log("script.js - top", 4);
 }
+console.log("script.js - top", "end");
 
 if (domain == "8tracks.com") {
 	getInfo = function() {
@@ -402,44 +407,72 @@ artistValue = null;
 albumValue = null;
 artworkValue = "-1";
 
+console.log("script.js - intervalOptions", 1);
 interval = self.options.preferences.interval;
+console.log("script.js - intervalOptions", 2);
 interval = interval > 0 ? 1000*interval : 5000;
+console.log("script.js - intervalOptions", "end");
 window.setInterval(function(){
+	console.log("script.js - interval", 1);
 	try {
+		console.log("script.js - interval", 2);
 		var songInfo = getInfo();
+		console.log("script.js - interval", 3);
 		var newSong = songInfo[0], newArtist = songInfo[1], newAlbum = songInfo[2], newArtwork = songInfo[3];
+		console.log("script.js - interval", 4);
 		if (newSong != songValue || newArtist != artistValue || newAlbum != albumValue) {
+			console.log("script.js - interval", "4-1");
 			songValue = newSong;
 			artistValue = newArtist;
 			albumValue = newAlbum;
+			console.log("script.js - interval", "4-2");
 			saveData();
+			console.log("script.js - interval", "4-end");
 		}
+		console.log("script.js - interval", 5);
 		if (newArtwork != artworkValue) {
+			console.log("script.js - interval", "5-1");
 			artworkValue = newArtwork;
+			console.log("script.js - interval", "5-2");
 			saveArtwork();
+			console.log("script.js - interval", "5-end");
 		}
-	} catch (err) {}
+		console.log("script.js - interval", 6);
+	} catch (err) { console.log("script.js - interval error " + err); }
+	console.log("script.js - interval", "end\n\n");
 }, interval);
 
 function saveData() {
+	console.log("script.js - saveData", 1);
 	var songInfo = [songValue, artistValue, albumValue];
+	console.log("script.js - saveData", 2);
 	self.port.emit("songUpdate", songInfo);
+	console.log("script.js - saveData", "end");
 }
 
 function saveArtwork() {
+	console.log("script.js - saveArtwork", 1);
 	self.port.emit("artworkUpdate", artworkValue);
+	console.log("script.js - saveArtwork", "end");
 }
 
 self.port.on("alert", function(message) {
+	console.log("script.js - on'alert'", 1);
 	window.alert(message);
+	console.log("script.js - on'alert'", "end");
 });
 
 function parseTrack(track) {
+	console.log("script.js - parseTrack", 1);
 	if (self.options.preferences.parseTrack) {
+		console.log("script.js - parseTrack", 2);
 		if (track.indexOf(" - ") != -1) {
+			console.log("script.js - parseTrack", "end");
 			return track.split(" - ", 2).reverse();
 		}
+		console.log("script.js - parseTrack", 3);
 	}
+	console.log("script.js - parseTrack", "end");
 	return [track, null];
 }
 

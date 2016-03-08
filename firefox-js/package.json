@@ -1,6 +1,6 @@
 {
   "name": "currentsong",
-  "title": "CurrentSong",
+  "title": "CurrentSong [debug]",
   "id": "jid1-tXcW0tgdE3YBSQ@jetpack",
   "main": "lib/main.js",
   "author": "Paco Hobi",
@@ -40,7 +40,7 @@
       "title": "Notifications",
       "description": "If enabled a notification will be shown when a new song starts (not compatible with all systems)",
       "type": "bool",
-      "value": false
+      "value": true
   },
   {
     "name": "encoding",
