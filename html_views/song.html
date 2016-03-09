@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style type="text/css">
+		
+		@font-face {
+	    	font-family: Titillium;
+	    	src: url(TitilliumWeb-Light.ttf);
+		}
+
+		div {
+			text-align: right;
+			line-height: 20px;
+		}
+
+		#song {
+			font-size: 1.1em;
+		}
+
+		#artist, #album {
+			font-style: italic;
+			color: #ccc;
+		}
+
+		#text {
+			align-self: center;
+			min-width: 80px;
+		}
+
+		#artwork {
+			align-self: center;
+			max-width: 80px;
+			max-height: 80px;
+			margin-left: 10px;
+		}
+
+		#container {
+			display: flex;
+			flex-direction: row;
+			background-color: black;
+			font-family: Titillium;
+			color: white;
+			padding-left: 10px;
+			position: absolute;
+			bottom: 0;
+			height: 80px;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			box-sizing: border-box;
+			border-top-left-radius: 10px;
+
+			-webkit-transition: right 2s;
+			transition: right 2s;
+		}
+
+		.hidden {
+			right: -600px;
+		}
+
+		.shown {
+			right: 0;
+		}
+
+	</style>
+</head>
+<body>
+
+	<div id="container" class="hidden">
+		<div id="text">
+			<div id="song"></div>
+			<div id="artist"></div>
+			<div id="album"></div>
+		</div>
+		<img id="artwork" src="song.jpg">
+	</div>
+
+	<script type="text/javascript">
+
+		var XML_FILE = 'song.xml'; // path to the song.xml file
+
+		var container = document.getElementById("container");
+		var songContainer = document.getElementById("song");
+		var artistContainer = document.getElementById("artist");
+		var albumContainer = document.getElementById("album");
+		var artworkContainer = document.getElementById("artwork");
+		var song = '';
+		var artist = '';
+		var album = '';
+		var currentSong = '';
+		var currentArtist = '';
+		var currentAlbum = '';
+
+		var xhttp = new XMLHttpRequest();
+
+		loadXmlFile();
+		setInterval(loadXmlFile, 500);
+
+		function loadXmlFile() {
+			console.log('loadXmlFile');
+			xhttp.open("GET", XML_FILE, true);
+			xhttp.onreadystatechange = function() {
+				if (xhttp.readyState == 4 && xhttp.status == 200) {
+					var xml = xhttp.responseXML;
+					song = xml.getElementsByTagName("song")[0].innerHTML;
+					artist = xml.getElementsByTagName("artist")[0].innerHTML;
+					album = xml.getElementsByTagName("album")[0].innerHTML;
+
+					if (song != currentSong || artist != currentArtist || album != currentAlbum) {
+						currentSong = song;
+						currentArtist = artist;
+						currentAlbum = album;
+						updateUI();
+					}
+				}
+			};
+			xhttp.send();
+		}
+
+		function updateUI() {
+			container.className = "hidden";
+			setTimeout(function() {
+				artworkContainer.src = "song.jpg?" + new Date().getTime();
+				songContainer.innerHTML = currentSong;
+				artistContainer.innerHTML = currentArtist;
+				albumContainer.innerHTML = currentAlbum;
+				container.className = "shown";
+			}, 2000);
+		}
+		
+
+	</script>
+</body>
+</html>
