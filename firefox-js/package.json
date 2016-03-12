@@ -7,7 +7,7 @@
   "description": "Writes the current playing song from popular music sites to a text file and a XML file",
   "author": "Paco Hobi",
   "license": "MIT",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "preferences": [{
       "name": "saveFolder",
       "title": "Folder",

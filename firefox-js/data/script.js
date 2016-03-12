@@ -7,13 +7,13 @@ if (domain == "8tracks.com") {
 	getInfo = function() {
 		var song, artist, album, artwork;
 		try {
-			song = document.getElementsByClassName("title_artist")[0].getElementsByClassName("t")[0].firstChild.nodeValue;
+			song = document.getElementById("player_container").getElementsByClassName("title_artist")[0].getElementsByClassName("t")[0].firstChild.nodeValue;
 		} catch (err) { song = null; }
 		try {
-			artist = document.getElementsByClassName("title_artist")[0].getElementsByClassName("a")[0].firstChild.nodeValue;
+			artist = document.getElementById("player_container").getElementsByClassName("title_artist")[0].getElementsByClassName("a")[0].firstChild.nodeValue;
 		} catch (err) { artist = null; }
 		try {
-			album = document.getElementsByClassName("track_metadata")[0].getElementsByClassName("album")[0].getElementsByClassName("detail")[0].firstChild.nodeValue;
+			album = document.getElementById("player_container").getElementsByClassName("track_metadata")[0].getElementsByClassName("album")[0].getElementsByClassName("detail")[0].firstChild.nodeValue;
 		} catch (err) { artist = null; }
 		try {
 			artwork = document.getElementById("player_mix").getElementsByTagName("img")[0].src.slice(0, -9) + "200&h=200";
