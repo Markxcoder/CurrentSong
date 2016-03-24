@@ -259,9 +259,15 @@ if (domain == "8tracks.com") {
 		try {
 			song = document.getElementsByClassName("playbackSoundBadge__title")[0].childNodes[2].firstChild.nodeValue;
 		} catch (err) { song = null; }
-		song = parseTrack(song);
-		artist = song[1];
-		song = song[0];
+		try {
+			var title = document.title;
+			var by_index = title.indexOf(" by ");
+			if (title.toLowerCase().indexOf("soundcloud") == -1 && by_index > -1) {
+				artist = title.substring(by_index + 4);
+			} else {
+				artist = artistValue;
+			}
+		} catch (err) { artist = null; }
 		album = null; // TODO: get album
 		try {
 			artwork = document.getElementsByClassName("playbackSoundBadge")[0].getElementsByClassName("sc-artwork")[0].getElementsByTagName("span")[0].style.backgroundImage.slice(5, -11) + "200x200.jpg";
