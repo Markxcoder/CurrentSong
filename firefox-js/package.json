@@ -8,61 +8,64 @@
   "author": "Paco Hobi",
   "license": "MIT",
   "version": "1.2.9",
+  "permissions": {
+    "multiprocess": true
+  },
   "preferences": [{
       "name": "saveFolder",
       "title": "Folder",
       "description": "Folder in which the song info will be saved",
       "type": "directory"
-  },
-  {
+    },
+    {
       "name": "infoFormat",
       "title": "Format",
       "description": "Format of the saved song information:\n\t%song% will be replaced by the song name\n\t%artist% will be replaced by the artist name\n\t%album% will be replaced by the album name\n\t%line% will be replaced by a new line",
       "type": "string",
       "value": "%song%%line%by %artist%"
-  },
-  {
+    },
+    {
       "name": "saveArtwork",
       "title": "Save artwork",
       "description": "If enabled the song artwork will be downloaded to 'song.jpg' (when available)",
       "type": "bool",
       "value": true
-  },
-  {
+    },
+    {
       "name": "interval",
       "title": "Interval",
       "description": "Time in seconds to wait between new song checks",
       "type": "integer",
       "value": 5
-  },
-  {
+    },
+    {
       "name": "notify",
       "title": "Notifications",
       "description": "If enabled a notification will be shown when a new song starts (not compatible with all systems)",
       "type": "bool",
       "value": false
-  },
-  {
-    "name": "encoding",
-    "type": "radio",
-    "title": "Text file encoding",
-    "value": "utf-8",
-    "options": [
-        {
-            "value": "utf-8",
-            "label": "UTF-8"
-        },
-        {
-            "value": "utf-16be",
-            "label": "UTF-16BE"
-        },
-        {
-            "value": "utf-16le",
-            "label": "UTF-16LE"
-        }
-    ]
-  },
-  {
+    },
+    {
+      "name": "encoding",
+      "type": "radio",
+      "title": "Text file encoding",
+      "value": "utf-8",
+      "options": [
+          {
+              "value": "utf-8",
+              "label": "UTF-8"
+          },
+          {
+              "value": "utf-16be",
+              "label": "UTF-16BE"
+          },
+          {
+              "value": "utf-16le",
+              "label": "UTF-16LE"
+          }
+      ]
+    },
+    {
       "name": "parseTrack",
       "title": "Parse title",
       "description": "If enabled will try to extract the artist name of the current title. Only applied to SoundCloud and YouTube.\n• This will only work correctly if the track title is in the format 'artist - song'\n• If the track title contains ' - ' but isn't in the correct format, the song and artist will be parsed incorrectly",
