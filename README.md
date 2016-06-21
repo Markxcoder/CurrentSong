@@ -17,6 +17,7 @@ Supported sites
 + [retro.grooveshark.com](http://retro.grooveshark.com)
 + [iheart.com](http://iheart.com)
 + [music.microsoft.com](https://music.microsoft.com)
++ [twitch.moobot.tv](https://twitch.moobot.tv)
 + [nightbot.tv](http://nightbot.tv/autodj)
 + [beta.nightbot.tv](https://beta.nightbot.tv/song_requests)
 + [pandora.com](http://pandora.com)
