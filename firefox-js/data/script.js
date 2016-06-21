@@ -465,12 +465,12 @@ function parseTrack(track) {
 	return [track, null];
 }
 
-function httpGet(theUrl, callback) {
-	var xmlHttp = new XMLHttpRequest();
-	xmlHttp.onreadystatechange = function() {
-		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
-			callback(xmlHttp.responseText);
-	};
-	xmlHttp.open("GET", theUrl, true); // false for synchronous request
-	xmlHttp.send(null);
-}
+// function httpGet(theUrl, callback) {
+// 	var xmlHttp = new XMLHttpRequest();
+// 	xmlHttp.onreadystatechange = function() {
+// 		if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+// 			callback(xmlHttp.responseText);
+// 	};
+// 	xmlHttp.open("GET", theUrl, true); // false for synchronous request
+// 	xmlHttp.send(null);
+// }
