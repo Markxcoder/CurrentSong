@@ -130,11 +130,14 @@ if (domain == "8tracks.com") {
 } else if (domain == "twitch.moobot.tv") {
 	getInfo = function(callback) {
 		var button = document.getElementsByClassName("widget-songrequests")[0].getElementsByClassName("btn-info")[0];
-		if (button.children.length < 2)
+		var alreadyOpen = button.children.length > 1;
+		if (!alreadyOpen)
 			button.click();
 		try {
 			song = document.getElementById("songrequests-widget-info").getElementsByTagName("p")[0].firstChild.nodeValue;;
 		} catch (err) { song = null; }
+		if (!alreadyOpen && button.children.length > 1)
+			button.click();
 		song = parseTrack(song);
 		artist = song[1];
 		song = song[0];
