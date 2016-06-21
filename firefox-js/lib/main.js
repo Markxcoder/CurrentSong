@@ -23,6 +23,7 @@ pageMod.PageMod({
         "*.grooveshark.com",
         "*.retro.grooveshark.com",
         "*.iheart.com",
+        "*.twitch.moobot.tv",
         "https://www.nightbot.tv/autodj",
         "*.beta.nightbot.tv",
         "*.pandora.com",
