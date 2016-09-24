@@ -372,20 +372,19 @@ else if (domain == "listen.tidal.com") {
 	}
 } else if (domain == "vk.com") {
 	getInfo = function(callback) {
-		var song, artist, album, artwork;
+		var song, artist, album, artwork, info;
 		try {
-			song = document.getElementById("ac_title").firstChild.nodeValue;
+			info = document.getElementsByClassName("top_audio_player_title")[0].firstChild.nodeValue;
+			if (info.indexOf(" – ") != -1) {
+				info = info.split(" – ", 2);
+				artist = info[0];
+				song = info[1];
+			} else {
+				song = info;
+				artist = null;
+			}
 		} catch (err) {
-			try {
-				song = document.getElementById("gp_title").firstChild.nodeValue;
-			} catch (err) { song = null; }
-		}
-		try {
-			artist = document.getElementById("ac_performer").firstChild.nodeValue;
-		} catch (err) {
-			try {
-				artist = document.getElementById("gp_performer").firstChild.nodeValue;
-			} catch (err) { artist = null; }
+			song = null; artist = null;
 		}
 		album = null; // TODO: get album
 		artwork = null; // TODO: get artwork
