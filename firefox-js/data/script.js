@@ -146,7 +146,7 @@ if (domain == "8tracks.com") {
 		if (!alreadyOpen)
 			button.click();
 		try {
-			song = document.getElementById("songrequests-widget-info").getElementsByTagName("p")[0].firstChild.nodeValue;;
+			song = document.getElementById("songrequests-widget-info").getElementsByTagName("p")[0].firstChild.nodeValue;
 		} catch (err) { song = null; }
 		if (!alreadyOpen && button.children.length > 1)
 			button.click();

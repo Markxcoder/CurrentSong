@@ -96,6 +96,8 @@ function saveData(songInfo) {
         text = text.replace("%artist%", artist);
         text = text.replace("%album%", album);
         text = text.replace("%line%", "\n");
+        if (preferences.handleLongLines > 0)
+            text = handleLongLines(text);
         saveTextFile(textFile, text);
 
         // xml file
@@ -129,6 +131,61 @@ function downloadFile(fileName, url) {
     Task.spawn(function () {
         yield Downloads.fetch(url, fileName);
     }).then(null, Cu.reportError);
+}
+
+function handleLongLines(text) {
+    let lines = text.split("\n");
+    for (let i = 0; i < lines.length; i++) {
+        let line = lines[i];
+        if (line.trim().length == 0)
+            line = line;
+        else if (preferences.handleLongLines == 1)
+            line = truncateLine(line);
+        else if (preferences.handleLongLines == 2)
+            line = wrapLine(line);
+        lines[i] = line;
+    }
+    let newText = lines.join("\n")
+    return newText;
+}
+
+function truncateLine(text) {
+    let maxLength = Math.max(8, preferences.lineMaxLength);
+    if (text.length > maxLength)
+        text = text.slice(0, maxLength - 3) + "...";
+    return text;
+}
+
+function wrapLine(text) {
+    let lines = [];
+    let maxLength = preferences.lineMaxLength;
+    let words = text.split(" ");
+    let currentWords = [];
+
+    for (let i = 0; i < words.length; i++) {
+        let word = words[i];
+
+        // If line is empty add one word, even if its too long
+        if (currentWords.length == 0) {
+            currentWords.push(word);
+        }
+        // If adding the next word would exceed maximum length, start a new line
+        else if (currentWords.join(" ").length + word.length + 1 > maxLength) {
+            lines.push(currentWords.join(" "));
+            currentWords = [word];
+        }
+        // If not, add the next word to the same line
+        else {
+            currentWords.push(word);
+        }
+    }
+
+    // If there are words not yet added, add them
+    if (currentWords.length > 0)
+        lines.push(currentWords.join(" "));
+
+    let newText = lines.join("\n");
+    return newText;
 }
 
 function notifySong(songInfo) {
