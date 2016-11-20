@@ -15,6 +15,7 @@ Supported sites
 + [play.google.com](http://play.google.com/music)
 + [grooveshark.com](http://grooveshark.com)
 + [retro.grooveshark.com](http://retro.grooveshark.com)
++ [hypem.com](http://hypem.com)
 + [iheart.com](http://iheart.com)
 + [music.microsoft.com](https://music.microsoft.com)
 + [twitch.moobot.tv](https://twitch.moobot.tv)
