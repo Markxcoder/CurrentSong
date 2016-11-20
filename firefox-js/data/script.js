@@ -141,12 +141,17 @@ if (domain == "8tracks.com") {
 	}
 } else if (domain == "twitch.moobot.tv") {
 	getInfo = function(callback) {
+        var song, artist, album, artwork;
 		var button = document.getElementsByClassName("widget-songrequests")[0].getElementsByClassName("btn-info")[0];
 		var alreadyOpen = button.children.length > 1;
 		if (!alreadyOpen)
 			button.click();
 		try {
-			song = document.getElementById("songrequests-widget-info").getElementsByTagName("p")[0].firstChild.nodeValue;
+            var elements = document.getElementById("songrequests-widget-info").children;
+            var el = elements[0];
+            for (var i = 1; i < elements.length && el.nodeName != "P"; i++)
+                el = elements[i];
+            song = el.firstChild.nodeValue;
 		} catch (err) { song = null; }
 		if (!alreadyOpen && button.children.length > 1)
 			button.click();
