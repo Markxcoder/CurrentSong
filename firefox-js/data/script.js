@@ -107,6 +107,18 @@ if (domain == "8tracks.com") {
 		album = null; // TODO: get album
 		callback([song, artist, album, artwork]);
 	}
+} else if (domain == "hypem.com") {
+	getInfo = function(callback) {
+		var song, artist, album, artwork;
+		try {
+			song = document.getElementById("player-nowplaying").getElementsByTagName("a")[1].firstChild.nodeValue;
+		} catch (err) { song = null; }
+		try {
+			artist = document.getElementById("player-nowplaying").getElementsByTagName("a")[0].firstChild.nodeValue;
+		} catch (err) { artist = null; }
+		album = null; // TODO: get album
+		callback([song, artist, album, artwork]);
+	}
 } else if (domain == "iheart.com") {
 	getInfo = function(callback) {
 		var song, artist, album, artwork;
@@ -134,7 +146,7 @@ if (domain == "8tracks.com") {
 		if (!alreadyOpen)
 			button.click();
 		try {
-			song = document.getElementById("songrequests-widget-info").getElementsByTagName("p")[0].firstChild.nodeValue;;
+			song = document.getElementById("songrequests-widget-info").getElementsByTagName("p")[0].firstChild.nodeValue;
 		} catch (err) { song = null; }
 		if (!alreadyOpen && button.children.length > 1)
 			button.click();

@@ -7,11 +7,12 @@
   "description": "Writes the current playing song from popular music sites to a text file and a XML file",
   "author": "Paco Hobi",
   "license": "MIT",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "permissions": {
     "multiprocess": true
   },
-  "preferences": [{
+  "preferences": [
+    {
       "name": "saveFolder",
       "title": "Folder",
       "description": "Folder in which the song info will be saved",
@@ -23,6 +24,34 @@
       "description": "Format of the saved song information:\n\t%song% will be replaced by the song name\n\t%artist% will be replaced by the artist name\n\t%album% will be replaced by the album name\n\t%line% will be replaced by a new line",
       "type": "string",
       "value": "%song%%line%by %artist%"
+    },
+    {
+      "name": "handleLongLines",
+      "title": "Wrap/truncate long lines",
+      "description": "If you enable this option lines that exceed the max line length specified in the next option will be truncated or wrapped.",
+      "type": "radio",
+      "value": 0,
+      "options": [
+        {
+          "value": 0,
+          "label": "No"
+        },
+        {
+          "value": 1,
+          "label": "Truncate"
+        },
+        {
+          "value": 2,
+          "label": "Wrap"
+        }
+      ]
+    },
+    {
+      "name": "lineMaxLength",
+      "title": "Max length of lines",
+      "description": "This option will be ignored if the previous option is disabled.",
+      "type": "integer",
+      "value": 25
     },
     {
       "name": "saveArtwork",
@@ -42,8 +71,7 @@
       "name": "notify",
       "title": "Notifications",
       "description": "If enabled a notification will be shown when a new song starts (not compatible with all systems)",
-      "type": "bool",
-      "value": false
+      "type": "bool"
     },
     {
       "name": "encoding",
@@ -71,5 +99,6 @@
       "description": "If enabled will try to extract the artist name of the current title. Only applied to SoundCloud and YouTube.\n• This will only work correctly if the track title is in the format 'artist - song'\n• If the track title contains ' - ' but isn't in the correct format, the song and artist will be parsed incorrectly",
       "type": "bool",
       "value": true
-  }]
+    }
+  ]
 }
