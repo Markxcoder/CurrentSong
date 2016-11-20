@@ -22,6 +22,7 @@ pageMod.PageMod({
         /.*play\.google\.com\/music\/listen.*/,
         "*.grooveshark.com",
         "*.retro.grooveshark.com",
+        "*.hypem.com",
         "*.iheart.com",
         "*.twitch.moobot.tv",
         "https://www.nightbot.tv/autodj",
