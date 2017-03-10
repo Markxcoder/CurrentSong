@@ -194,17 +194,16 @@ if (domain == "8tracks.com") {
     getInfo = function(callback) {
         var song, artist, album, artwork;
         try {
-            song = document.getElementsByClassName("playerBarSong")[0].firstChild.nodeValue;
+            song = document.getElementsByClassName("Tuner__Audio__TrackDetail__title")[0].firstChild.firstChild.nodeValue;
         } catch (err) { song = null; }
         try {
-            artist = document.getElementsByClassName("playerBarArtist")[0].firstChild.nodeValue;
+            artist = document.getElementsByClassName("Tuner__Audio__TrackDetail__artist")[0].firstChild.firstChild.nodeValue;
         } catch (err) { artist = null; }
         try {
-            album = document.getElementsByClassName("playerBarAlbum")[0].firstChild.nodeValue;
-        } catch (err) { album = null; }
-        try {
-            artwork = document.getElementsByClassName("albumArt")[0].getElementsByTagName("img")[0].src;
+            artwork = document.getElementsByClassName("Tuner__Audio__TrackDetail__img")[0].getElementsByTagName("img")[0].src;
+            artwork = artwork.replace("90W_90H", "500W_500H");
         } catch (err) { artwork = null; }
+        album = null;
         callback([song, artist, album, artwork]);
     }
 } else if (domain == "plug.dj") {
