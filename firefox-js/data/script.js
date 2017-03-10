@@ -177,11 +177,9 @@ if (domain == "8tracks.com") {
     }
 } else if (domain == "beta.nightbot.tv") {
     getInfo = function(callback) {
-        if (!window.location.href.contains("beta.nightbot.tv/song_request"))
-            return;
         var song, artist, album, artwork;
         try {
-            song = document.getElementsByTagName("h4")[0].firstChild.firstChild.nodeValue;
+            song = document.getElementsByClassName("current-track")[0].firstChild.firstChild.firstChild.nodeValue;
         } catch (err) { song = null; }
         song = parseTrack(song);
         artist = song[1];
