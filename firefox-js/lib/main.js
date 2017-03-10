@@ -92,10 +92,10 @@ function saveData(songInfo) {
     let text = preferences.infoFormat;
     if (song.length != 0 || artist.length != 0 || album.length != 0) {
         // text file
-        text = text.replace("%song%", song);
-        text = text.replace("%artist%", artist);
-        text = text.replace("%album%", album);
-        text = text.replace("%line%", "\n");
+        text = text.replace(/%song%/g, song);
+        text = text.replace(/%artist%/g, artist);
+        text = text.replace(/%album%/g, album);
+        text = text.replace(/%line%/g, "\n");
         if (preferences.handleLongLines > 0)
             text = handleLongLines(text);
         saveTextFile(textFile, text);
