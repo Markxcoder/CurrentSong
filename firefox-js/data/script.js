@@ -249,6 +249,23 @@ if (domain == "8tracks.com") {
         } catch (err) { artwork = null; }
         callback([song, artist, album, artwork]);
     }
+} else if (domain == "open.spotify.com") {
+    getInfo = function(callback) {
+        var song, artist, album;
+        try {
+            song = document.getElementsByClassName("track-info__name")[0].getElementsByTagName("a")[0].firstChild.nodeValue;
+            if (song == " ") song = null;
+        } catch (err) { song = null; }
+        try {
+            artist = document.getElementsByClassName("track-info__artists")[0].getElementsByTagName("a")[0].firstChild.nodeValue;
+            if (artist == " ") artist = null;
+        } catch (err) { artist = null; }
+        album = null; // TODO: get album
+        try {
+            artwork = document.getElementsByClassName("now-playing__cover-art")[0].getElementsByClassName("cover-art-image")[0].style.backgroundImage.slice(5, -2);
+        } catch (err) { artwork = null; }
+        callback([song, artist, album, artwork]);
+    }
 } else if (domain == "play.spotify.com") {
     getInfo = function(callback) {
         var song, artist = [], album;

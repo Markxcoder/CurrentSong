@@ -31,6 +31,7 @@ pageMod.PageMod({
         "*.plug.dj",
         "*.rdio.com",
         "*.songza.com",
+        "*.open.spotify.com",
         "*.play.spotify.com",
         "*.player.spotify.com",
         "*.soundcloud.com",
