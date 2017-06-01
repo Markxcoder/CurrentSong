@@ -441,7 +441,13 @@ else if (domain == "listen.tidal.com") {
         var song, artist, album, artwork;
         try {
             song = document.getElementById("eow-title").firstChild.nodeValue;
-        } catch (err) { song = null; }
+        } catch (err) {
+            try {
+                song = document.getElementById("info").getElementsByClassName("title")[0].firstChild.nodeValue;
+            } catch (err) {
+                song = null;
+            }
+        }
         song = parseTrack(song);
         artist = song[1];
         song = song[0];
