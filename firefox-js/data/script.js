@@ -458,7 +458,7 @@ else if (domain == "listen.tidal.com") {
             song = document.getElementById("eow-title").firstChild.nodeValue;
         } catch (err) {
             try {
-                song = document.getElementById("info").getElementsByClassName("title")[0].firstChild.nodeValue;
+                song = document.getElementsByTagName("h1")[0].firstChild.nodeValue;
             } catch (err) {
                 song = null;
             }
