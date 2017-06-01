@@ -24,6 +24,7 @@ pageMod.PageMod({
         "*.retro.grooveshark.com",
         "*.hypem.com",
         "*.iheart.com",
+        "*.monstercat.com",
         "*.twitch.moobot.tv",
         "https://www.nightbot.tv/autodj",
         "*.beta.nightbot.tv",

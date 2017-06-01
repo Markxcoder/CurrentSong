@@ -139,6 +139,21 @@ if (domain == "8tracks.com") {
         } catch (err) { artwork = null; }
         callback([song, artist, album, artwork]);
     }
+} else if (domain == "monstercat.com") {
+    getInfo = function(callback) {
+        var song, artist, album, artwork;
+        try {
+            song = document.getElementsByClassName("scroll-title")[0].firstChild.nodeValue;
+        } catch (err) {
+            song = null;
+        }
+        song = parseTrack(song);
+        artist = song[1];
+        song = song[0];
+        album = null; // TODO: get album
+        artwork = null; // TODO: get artwork
+        callback([song, artist, album, artwork]);
+    }
 } else if (domain == "twitch.moobot.tv") {
     getInfo = function(callback) {
         var song, artist, album, artwork;
