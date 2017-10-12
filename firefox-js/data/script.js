@@ -54,15 +54,14 @@ if (domain == "8tracks.com") {
     getInfo = function(callback) {
         var song, artist, album, artwork;
         try {
-            song = document.getElementsByClassName("track-name")[0].childNodes[2].nodeValue;
+            song = document.getElementsByClassName("track-name")[0].firstChild.nodeValue;
         } catch (err) { song = null; }
         try {
-            artist = document.getElementsByClassName("track-name")[0].childNodes[1].firstChild.nodeValue.trim();
-            artist = artist.slice(0, artist.length-2);
+            artist = document.getElementsByClassName("artist-name")[0].firstChild.nodeValue.slice(0, -3);
         } catch (err) { artist = null; }
         album = null; // TODO: get album
         try {
-            artwork = document.getElementsByClassName("track-region")[0].getElementsByTagName("img")[0].src.slice(0, -5) + "150x150";
+            artwork = document.getElementsByClassName("track-region")[0].getElementsByClassName("artwork")[0].getElementsByTagName("img")[0].src.slice(0, -5) + "150x150";
         } catch (err) { artwork = null; }
         callback([song, artist, album, artwork]);
     }
