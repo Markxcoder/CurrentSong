@@ -320,20 +320,14 @@ if (domain == "8tracks.com") {
     getInfo = function(callback) {
         var song, artist, album, artwork;
         try {
-            song = document.getElementsByClassName("playbackSoundBadge__title")[0].childNodes[2].firstChild.nodeValue;
+            song = document.getElementsByClassName("playbackSoundBadge__titleLink")[0].childNodes[2].firstChild.nodeValue;
         } catch (err) { song = null; }
         try {
-            var title = document.title;
-            var by_index = title.indexOf(" by ");
-            if (title.toLowerCase().indexOf("soundcloud") == -1 && by_index > -1) {
-                artist = title.substring(by_index + 4);
-            } else {
-                artist = artistValue;
-            }
+            artist = document.getElementsByClassName("playbackSoundBadge__lightLink")[0].firstChild.nodeValue;
         } catch (err) { artist = null; }
         album = null; // TODO: get album
         try {
-            artwork = document.getElementsByClassName("playbackSoundBadge")[0].getElementsByClassName("sc-artwork")[0].getElementsByTagName("span")[0].style.backgroundImage.slice(5, -11) + "200x200.jpg";
+            artwork = document.getElementsByClassName("playbackSoundBadge__avatar")[0].getElementsByTagName("span")[0].style.backgroundImage.slice(5, -11) + "200x200.jpg";
         } catch (err) { artwork = null; }
         callback([song, artist, album, artwork]);
     }
