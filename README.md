@@ -1,5 +1,7 @@
 ![CurrentSong](https://raw.githubusercontent.com/PacoHobi/CurrentSong/master/img/header.png)
 
+> :warning: **IMPORTANT: it's no longer possible for an extension to write to the local filesystem since Firefox 57. Without the ability to write local files CurrentSong is no longer feasible. If you want to be notified of any possible future port of this extension please send me an email.**
+
 CurrentSong is a Firefox extension that writes the current playing song from popular music sites to a text file and a XML file. The text file can be used with [OBS](https://obsproject.com), [XSplit](https://www.xsplit.com) or similar software to display the song information in an overlay. The XML file can be used to add animations to your overlay.
 
 CurrentSong is very lightweight and non-intrusive: once you install and configure it, you can leave it and forget it. CurrentSong will not add any icons or menus to your browser and it will start working automatically when you start Firefox and go to one of the supported websites.
