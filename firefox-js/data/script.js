@@ -448,7 +448,9 @@ else if (domain == "listen.tidal.com") {
     getInfo = function(callback) {
         var song, artist, album, artwork;
         try {
-            song = document.getElementById("eow-title").firstChild.nodeValue;
+            var songTemp = document.title;
+			var titleLength = songTemp.length - 10;
+			song = songTemp.substr(0, titleLength);
         } catch (err) {
             try {
                 song = document.getElementsByTagName("h1")[0].firstChild.nodeValue;
